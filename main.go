@@ -33,7 +33,12 @@ var req CalculationRequest
 if err != nil {
   return c.JSON(http.StatusBadRequest, map[string]string{"error": "invalid expression"})
 }
-  
+  calc := Calculation {
+    ID: uuid.NewString(),
+    Expression: req.Expression,
+    Result: result,
+  }
+  calculations = append(calculations, calc)
 }
 
 func main() {
