@@ -39,6 +39,7 @@ if err != nil {
     Result: result,
   }
   calculations = append(calculations, calc)
+  return c.JSON(http.StatusCreated, calc)
 }
 
 func main() {
