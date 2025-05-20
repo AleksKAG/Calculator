@@ -29,6 +29,10 @@ var req CalculationRequest
   if err := c.Bind(&req); err != nil {
     return c.JSON(http.StatusBadRequest, map[string]string{"error": "invalid request"})
   }
+  result, err := calculatteExpression(req.Expression)
+if err != nil {
+  return c.JSON(http.StatusBadRequest, map[string]string{"error": "invalid expression"})
+}
   
 }
 
