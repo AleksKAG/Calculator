@@ -25,4 +25,6 @@ func main() {
 e := echo.New()
   e.Use(middleware.CORS())
   e.Use(middleware.Logger())
+  e.GET(path: "/calculations", getCalculations)
+  e.Start(address: "localhost:8080")
 }
