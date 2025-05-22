@@ -1,6 +1,8 @@
 package main
-import "fmt"
-
+import ("fmt"
+        "net/http"
+        
+)
 type Calculation struct {
 ID string 'json:"id"'
 Expression string 'json:"expression"'
@@ -11,7 +13,7 @@ type CalculationRequest struct {
 Expression string 'json:"expression"'
 }
 
-vav calculations = []Calculation{}
+var calculations = []Calculation{}
 
 func calculateExpression(expression string) (string, error) {
   expr, err := govaluate.NewEvaluableExpression(expression)
@@ -20,6 +22,7 @@ func calculateExpression(expression string) (string, error) {
   }
 return fmt.Printf(format: "%v", result), err
 }
+
 func getCalculations(c echo.Context) error {
  return c.JSON(http.StatusOk, calculations) 
 }
@@ -40,6 +43,13 @@ if err != nil {
   }
   calculations = append(calculations, calc)
   return c.JSON(http.StatusCreated, calc)
+}
+
+func patchCalculations(c echo.Context) error {
+
+}
+
+  
 }
 
 func main() {
