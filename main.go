@@ -63,6 +63,7 @@ if calculation.ID == id {
         return c.JSON(http.StatusOk, calculations[i])
 }
 }
+         return c.JSON(http.StatusBadRequest, map[string]string{"error": "Calculation not fond"})
 }
 
   
