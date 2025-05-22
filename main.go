@@ -46,7 +46,21 @@ if err != nil {
 }
 
 func patchCalculations(c echo.Context) error {
-
+id := c.Param(name: "id")
+        
+var req CalculationRequest
+  if err := c.Bind(&req); err != nil {
+    return c.JSON(http.StatusBadRequest, map[string]string{"error": "invalid request"})
+  }
+  result, err := calculatteExpression(req.Expression)
+if err != nil {
+  return c.JSON(http.StatusBadRequest, map[string]string{"error": "invalid expression"})
+}
+for i, calculation := range calculations {
+if calculation.ID == id {
+        calculations[i].Expression = req.Expression
+}
+}
 }
 
   
