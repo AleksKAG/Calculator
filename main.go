@@ -59,6 +59,8 @@ if err != nil {
 for i, calculation := range calculations {
 if calculation.ID == id {
         calculations[i].Expression = req.Expression
+        calculations[i].Result = req.Result
+        return c.JSON(http.StatusOk, calculations[i])
 }
 }
 }
